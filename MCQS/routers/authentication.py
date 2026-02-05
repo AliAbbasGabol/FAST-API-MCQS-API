@@ -12,7 +12,7 @@ router = APIRouter(tags=['Authentication'])
 def login(request: OAuth2PasswordRequestForm = Depends() , db: Session = Depends(database.get_db)):
     user = db.query(models.users).filter(models.users.email == request.username).first()
     if not user:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"no user with email {request.email}")
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,detail=f"no user with email {request.username}")
     else:
         if hashing.Hash.verify(request.password,user.password):
             access_token = jwt_gen.create_access_token(data={"sub": user.email})

@@ -19,5 +19,5 @@ def user_reqister(request: schemas.user, db : Session = Depends(get_db)):
 
 
 @router.get("/{id}", response_model=schemas.show_user)
-def users_get(id: int, db : Session = Depends(get_db)):
-    return user.get_user(id,db)
+def users_get(user_id: int, db : Session = Depends(get_db)):
+    return user.get_user(user_id, db)

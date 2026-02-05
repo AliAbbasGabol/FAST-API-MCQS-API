@@ -13,10 +13,10 @@ def create_mcq(request: schemas.MCQS, db: Session):
     db.refresh(new_mcq)
     return new_mcq
 
-def delete_mcq(id: int, db: Session):
-    mcq = db.query(models.mcqs).filter(models.mcqs.id == id).first()
+def delete_mcq(mcq_id: int, db: Session):
+    mcq = db.query(models.mcqs).filter(models.mcqs.id == mcq_id).first()
     if not mcq:
-        raise HTTPException(status_code = 404, detail = f'mcq with id {id} not found.')
+        raise HTTPException(status_code = 404, detail = f'mcq with id {mcq_id} not found.')
     else:
         
         db.delete(mcq)
@@ -24,20 +24,20 @@ def delete_mcq(id: int, db: Session):
         return 'destroyed'
     
 
-def update_mcq(request: schemas.MCQS, id: int, db: Session):
-    mcq = db.query(models.mcqs).filter(models.mcqs.id == id)
+def update_mcq(request: schemas.MCQS, mcq_id: int, db: Session):
+    mcq = db.query(models.mcqs).filter(models.mcqs.id == mcq_id)
     if not mcq:
-        raise HTTPException(status_code=404, detail=f'mcq with id {id} not found')
+        raise HTTPException(status_code=404, detail=f'mcq with id {mcq_id} not found')
     else:
         mcq.update({'question': request.question,'answer':request.answer},  synchronize_session=False)
         db.commit()
         return {"updated successfullyy"}
     
 
-def get_mcq(id: int, db: Session):
-    mcq = db.query(models.mcqs).filter(models.mcqs.id == id).first()
+def get_mcq(mcq_id: int, db: Session):
+    mcq = db.query(models.mcqs).filter(models.mcqs.id == mcq_id).first()
     
     if not mcq:
-        raise HTTPException(status_code = 404, detail=f'mcq with {id} not found')
+        raise HTTPException(status_code = 404, detail=f'mcq with {mcq_id} not found')
  
     return mcq

@@ -17,7 +17,7 @@ class show_user(BaseModel):
     email: str
     mcq: List[MCQS]=[]
     class Config():
-        orm_model = True
+        from_attributes = True
 
 
 
@@ -26,7 +26,7 @@ class show_mcqs(BaseModel):
     answer: str
     creator: Optional[show_user] = None
     class Config():
-        orm_model = True
+        from_attributes = True
 
 
 class login(BaseModel):

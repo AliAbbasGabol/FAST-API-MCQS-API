@@ -3,7 +3,7 @@ from MCQS import schemas, database, models
 from typing import List
 from sqlalchemy.orm import Session
 from MCQS.Repository import mcq
-import oauth2
+from MCQS.routers import oauth2
 
 router = APIRouter(tags=['mcqs'],prefix="/mcqs")
 

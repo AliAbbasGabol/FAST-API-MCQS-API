@@ -1,6 +1,6 @@
 from fastapi import Depends, HTTPException, status
 from typing import Annotated
-from . import jwt_gen
+import jwt_gen
 from jose import JWTError
 from fastapi.security import OAuth2PasswordBearer
 

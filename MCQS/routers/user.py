@@ -1,9 +1,9 @@
 from fastapi import APIRouter, Depends, HTTPException, Response
-from .. import schemas, database, models
+from MCQS import schemas, database, models
 from typing import List
 from sqlalchemy.orm import Session
-from ..hashing import Hash
-from ..Repository import user
+from MCQS.hashing import Hash
+from MCQS.Repository import user
 
 
 router = APIRouter(tags=['user'],prefix="/user")

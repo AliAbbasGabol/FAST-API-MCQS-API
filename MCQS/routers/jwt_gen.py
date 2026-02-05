@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta, timezone
 from jose import jwt,JWTError
-from .. import schemas
+from MCQS import schemas
 
 
 

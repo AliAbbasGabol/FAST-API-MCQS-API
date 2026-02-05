@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from fastapi import HTTPException
-from .. import models, schemas
+from MCQS import models, schemas
 
 def get_all(db: Session):
     mcqs = db.query(models.mcqs).all()

@@ -1,7 +1,7 @@
 from fastapi import Depends, HTTPException
-from .. import schemas, models
+from MCQS import schemas, models
 from sqlalchemy.orm import Session
-from ..hashing import Hash
+from MCQS.hashing import Hash
 def get_user(user_id: int, db: Session):
     user = db.query(models.users).filter(models.users.id == user_id).first()
     if not user:

@@ -3,36 +3,37 @@ from .. import schemas, database, models
 from typing import List
 from sqlalchemy.orm import Session
 from ..Repository import mcq
+from . import oauth2
 
 router = APIRouter(tags=['mcqs'],prefix="/mcqs")
 
 get_db = database.get_db
 
 @router.get("/",response_model=list[schemas.show_mcqs])
-def read(db : Session = Depends(get_db)):
+def read(db : Session = Depends(get_db),get_current_user: schemas.MCQS = Depends(oauth2.get_current_user)):
     return mcq.get_all(db)
 
 
 @router.post("/", status_code = 201)
-def create(request: schemas.MCQS, db : Session = Depends(get_db)):
+def create(request: schemas.MCQS, db : Session = Depends(get_db),get_current_user: schemas.MCQS = Depends(oauth2.get_current_user)):
     return mcq.create_mcq(request, db)
     
 
 
 @router.delete("/{id}")
-def deletor(id,db : Session = Depends(get_db)):
+def deletor(id,db : Session = Depends(get_db),get_current_user: schemas.MCQS = Depends(oauth2.get_current_user)):
     return mcq.delete_mcq(id,db)
     
     
 
 
 @router.put("/{id}",status_code = 202)
-def updator(request: schemas.MCQS, id, db : Session = Depends(get_db)):
+def updator(request: schemas.MCQS, id, db : Session = Depends(get_db),get_current_user: schemas.MCQS = Depends(oauth2.get_current_user)):
     return mcq.update_mcq(request,id,db)
 
 
 @router.get("/{id}",response_model=schemas.show_mcqs)
-def reader(id: int,response: Response, db: Session = Depends(get_db)):
+def reader(id: int,response: Response, db: Session = Depends(get_db),get_current_user: schemas.MCQS = Depends(oauth2.get_current_user)):
     return mcq.get_mcq(id,db)
 
 

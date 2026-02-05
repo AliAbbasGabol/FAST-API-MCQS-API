@@ -27,3 +27,17 @@ class show_mcqs(BaseModel):
     creator: Optional[show_user] = None
     class Config():
         orm_model = True
+
+
+class login(BaseModel):
+    email: str
+    passowrd: str
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    email: str | None = None

@@ -1,8 +1,7 @@
 fastapi
-uvicorn[standard]
+uvicorn
 sqlalchemy
 passlib
 python-jose
 python-multipart
 bcrypt
-python-dotenv

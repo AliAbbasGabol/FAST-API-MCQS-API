@@ -1,12 +1,11 @@
 
-import os
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 
-# Use environment variable if available, otherwise default to local sqlite
-SQLALCHEMY_DATABASE_URL = os.getenv('DATABASE_URL', 'sqlite:///./mcqs.db')
+
+SQLALCHEMY_DATABASE_URL = 'sqlite:///./mcqs.db'
 
 
 connect_args = {"check_same_thread": False}

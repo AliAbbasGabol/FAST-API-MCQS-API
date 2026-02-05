@@ -1,4 +1,4 @@
-from .database import base
+from MCQS.database import base
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship 
 

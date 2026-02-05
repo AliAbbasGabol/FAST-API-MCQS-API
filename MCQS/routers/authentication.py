@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from MCQS import schemas, database, models, hashing
-import jwt_gen
+from MCQS.routers import jwt_gen
 from fastapi.security import OAuth2PasswordBearer,OAuth2PasswordRequestForm
 
 
